@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["{ext,lib}/**/*", "LICENSE"]
   spec.bindir        = "exe"
   spec.require_paths = ["lib"]
-  spec.extra_rdoc_files = ["README.md", "ed25519.png"]
+  spec.extra_rdoc_files = ["README.md"]
 
   if defined? JRUBY_VERSION
     spec.platform = "java"
