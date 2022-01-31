@@ -1,4 +1,5 @@
 require "ed25519/key_pair"
+require "ed25519/seed"
 require "ed25519/signing_key"
 require "ed25519/verify_key"
 

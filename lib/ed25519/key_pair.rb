@@ -6,14 +6,14 @@ module Ed25519
 
     # Import key pair by seed value or generate a new one
     def initialize seed = nil
-      @seed = seed || SecureRandom.random_bytes(KEY_SIZE)
+      @seed = Seed.new(seed || SecureRandom.random_bytes(KEY_SIZE))
       keypair = Ed25519.provider.create_keypair(@seed)
       @signing_key = SigningKey.new(keypair[0, KEY_SIZE])
       @verify_key = VerifyKey.new(keypair[KEY_SIZE, KEY_SIZE])
     end # initialize
   
     def inspect
-      "#<#{self.class}:#{@seed.unpack1('H*')}>"
+      "#<#{self.class}:#{@seed.to_s.unpack1('H*')}>"
     end # inspect
     
     def to_s
