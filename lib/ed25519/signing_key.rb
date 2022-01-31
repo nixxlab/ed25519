@@ -14,6 +14,10 @@ module Ed25519
       end # if
     end # initialize
 
+    def inspect
+      "#<#{self.class}:#{@key.unpack1('H*')}>"
+    end # inspect
+
     # Sign the given message, returning an Ed25519 signature
     #
     # @param message [String] message to be signed

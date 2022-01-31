@@ -9,7 +9,7 @@ module Ed25519
 
     # Show hex representation of serialized coordinate in string inspection
     def inspect
-      "#<#{self.class}:#{@key_bytes.unpack1('H*')}>"
+      "#<#{self.class}:#{@key.unpack1('H*')}>"
     end # inspect
     
     # Verify an Ed25519 signature against the message

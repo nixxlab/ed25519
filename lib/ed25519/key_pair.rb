@@ -12,6 +12,10 @@ module Ed25519
       @verify_key = VerifyKey.new(keypair[KEY_SIZE, KEY_SIZE])
     end # initialize
   
+    def inspect
+      "#<#{self.class}:#{@seed.unpack1('H*')}>"
+    end # inspect
+    
     def to_s
       [@signing_key, @verify_key].join
     end # to_s
