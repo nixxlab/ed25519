@@ -5,7 +5,7 @@ module Ed25519
     attr_reader :seed, :signing_key, :verify_key
 
     # Import key pair by seed value or generate a new one
-    def initialize seed = ''
+    def initialize seed = nil
       @seed = seed || SecureRandom.random_bytes(KEY_SIZE)
       keypair = Ed25519.provider.create_keypair(@seed)
       @signing_key = SigningKey.new(keypair[0, KEY_SIZE])
