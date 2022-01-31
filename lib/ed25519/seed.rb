@@ -1,9 +1,9 @@
 module Ed25519
   class Seed
-    def initialize seed
+    def initialize seed = nil
+      @seed = seed || SecureRandom.random_bytes(KEY_SIZE)
       raise TypeError, "expected String, got #{seed.class}" unless seed.is_a?(String)
       raise ArgumentError, "expected #{KEY_SIZE}-byte String, got #{seed.bytesize}" unless seed.bytesize == KEY_SIZE
-      @seed = seed
     end # initialize
 
     def inspect

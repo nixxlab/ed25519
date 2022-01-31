@@ -6,7 +6,7 @@ module Ed25519
 
     # Import key pair by seed value or generate a new one
     def initialize seed = nil
-      @seed = Seed.new(seed || SecureRandom.random_bytes(KEY_SIZE))
+      @seed = Seed.new(seed)
       keypair = Ed25519.provider.create_keypair(@seed)
       @signing_key = SigningKey.new(keypair[0, KEY_SIZE])
       @verify_key = VerifyKey.new(keypair[KEY_SIZE, KEY_SIZE])
