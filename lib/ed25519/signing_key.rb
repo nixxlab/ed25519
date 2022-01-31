@@ -7,7 +7,7 @@ module Ed25519
     def initialize key = nil
       if key
         raise TypeError, "expected String, got #{key.class}" unless key.is_a?(String)
-        raise ArgumentError, "expected #{KEY_SIZE}-byte String, got #{key.bytesize}"  
+        raise ArgumentError, "expected #{KEY_SIZE}-byte String, got #{key.bytesize}" unless key.bytesize == KEY_SIZE
         @key = key
       else
         @key = SecureRandom.random_bytes(KEY_SIZE)
