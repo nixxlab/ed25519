@@ -19,8 +19,6 @@ Ed25519 provides a 128-bit security level, that is to say, all known attacks
 take at least 2^128 operations, providing the same security level as AES-128,
 NIST P-256, and RSA-3072.
 
-![Ed25519 Diagram](https://raw.githubusercontent.com/RubyCrypto/ed25519/master/ed25519.png)
-
 Ed25519 has a number of unique properties that make it one of the best-in-class
 digital signature algorithms:
 
