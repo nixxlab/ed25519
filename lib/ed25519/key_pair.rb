@@ -2,7 +2,8 @@ require 'securerandom'
 
 module Ed25519
   class KeyPair
-    attr_reader :seed, :signing_key, :verify_key
+    attr_reader :signing_key, :verify_key
+    alias_method :seed, :signing_key
 
     # Import key pair by seed value or generate a new one
     def initialize seed = nil
