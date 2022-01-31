@@ -3,8 +3,8 @@ require File.expand_path("lib/ed25519/version", __dir__)
 Gem::Specification.new do |spec|
   spec.name          = "ed25519"
   spec.version       = Ed25519::VERSION
-  spec.authors       = []
-  spec.email         = []
+  spec.authors       = ["Nixxlab team"]
+  spec.email         = ["nixxlab@gmail.com"]
   spec.summary       = "An efficient digital signature library providing the Ed25519 algorithm"
   spec.description   = "A Ruby binding to the Ed25519 elliptic curve public-key signature system described in RFC 8032."
   spec.homepage      = "https://github.com/nixxlab/ed25519"
