@@ -13,7 +13,7 @@ module Ed25519
     end # initialize
   
     def inspect
-      "#<#{self.class}:#{@seed.to_s.unpack1('H*')}>"
+      "#<#{self.class}:#{to_s.unpack1('H*')}>"
     end # inspect
     
     def to_s
