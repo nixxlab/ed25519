@@ -26,7 +26,11 @@ module Ed25519
     def sign message
       Ed25519.provider.sign(@key, message)
     end # sign
-
+    
+    def size
+      KEY_SIZE
+    end # size
+    
     # Return a compressed twisted Edwards coordinate representing the private key
     #
     # @return [String] bytestring serialization of this private key

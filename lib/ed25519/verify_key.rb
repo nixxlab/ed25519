@@ -29,6 +29,10 @@ module Ed25519
 
       raise VerifyError, "signature verification failed!"
     end # verify
+    
+    def size
+      KEY_SIZE
+    end # size
 
     # Return a compressed twisted Edwards coordinate representing the public key
     #

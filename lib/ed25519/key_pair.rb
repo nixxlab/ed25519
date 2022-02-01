@@ -16,6 +16,10 @@ module Ed25519
     def inspect
       "#<#{self.class}:#{to_s.unpack1('H*')}>"
     end # inspect
+
+    def size
+      2 * KEY_SIZE
+    end # size
     
     def to_s
       [@signing_key, @verify_key].join
