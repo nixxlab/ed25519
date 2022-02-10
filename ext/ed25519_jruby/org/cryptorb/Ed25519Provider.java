@@ -39,12 +39,12 @@ public class Ed25519Provider {
 
 		EdDSAParameterSpec edParams = EdDSANamedCurveTable.getByName(EdDSANamedCurveTable.ED_25519);
                 EdDSAPrivateKeySpec signingKey = new EdDSAPrivateKeySpec(seedBytes, edParams);
-                EdDSAPublicKeySpec verifyKey = new EdDSAPublicKeySpec(signingKey.getA(), edParams);
+                EdDSAPublicKeySpec verificationKey = new EdDSAPublicKeySpec(signingKey.getA(), edParams);
 
 		byte[] keypair = new byte[64];
 
 		System.arraycopy(seedBytes, 0, keypair, 0, 32);
-		System.arraycopy(verifyKey.getA().toByteArray(), 0, keypair, 32, 32);
+		System.arraycopy(verificationKey.getA().toByteArray(), 0, keypair, 32, 32);
 
 		return RubyString.newString(context.getRuntime(), keypair);
 	}
@@ -70,12 +70,12 @@ public class Ed25519Provider {
 	}
 
 	@JRubyMethod(name = "verify", module = true)
-	public static IRubyObject verify(ThreadContext context, IRubyObject self, IRubyObject verify_key, IRubyObject signature, IRubyObject msg) throws Exception {
-		byte[] verifyKeyBytes = verify_key.convertToString().getByteList().bytes();
+	public static IRubyObject verify(ThreadContext context, IRubyObject self, IRubyObject virification_key, IRubyObject signature, IRubyObject msg) throws Exception {
+		byte[] verificationKeyBytes = virification_key.convertToString().getByteList().bytes();
 		byte[] signatureBytes = signature.convertToString().getByteList().bytes();
 
-		if (verifyKeyBytes.length != 32) {
-			throw context.runtime.newArgumentError("expected 32-byte verify key, got " + verifyKeyBytes.length);
+		if (verificationKeyBytes.length != 32) {
+			throw context.runtime.newArgumentError("expected 32-byte verify key, got " + verificationKeyBytes.length);
 		}
 
 		if (signatureBytes.length != 64) {
@@ -84,9 +84,9 @@ public class Ed25519Provider {
 
 		EdDSAParameterSpec edParams = EdDSANamedCurveTable.getByName(EdDSANamedCurveTable.ED_25519);
 		Signature signer = new EdDSAEngine(MessageDigest.getInstance(edParams.getHashAlgorithm()));
-		EdDSAPublicKeySpec verifyKey = new EdDSAPublicKeySpec(verifyKeyBytes, edParams);
+		EdDSAPublicKeySpec verificationKey = new EdDSAPublicKeySpec(verificationKeyBytes, edParams);
 
-		signer.initVerify(new EdDSAPublicKey(verifyKey));
+		signer.initVerify(new EdDSAPublicKey(verificationKey));
 		signer.update(msg.convertToString().getByteList().bytes());
 
 		boolean isValid = signer.verify(signatureBytes);

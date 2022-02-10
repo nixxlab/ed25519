@@ -2,15 +2,14 @@ require 'securerandom'
 
 module Ed25519
   class KeyPair
-    attr_reader :signing_key, :verify_key
+    attr_reader :signing_key, :virification_key
     alias_method :seed, :signing_key
 
     # Import key pair by seed value or generate a new one
     def initialize seed = nil
-      @signing_key = SigningKey.new(seed)
-      @verify_key = VerifyKey.new(
-        Ed25519.provider.create_keypair(@signing_key.to_s)[KEY_SIZE, KEY_SIZE]
-      )
+      full_key = Ed25519.provider.create_keypair(seed)
+      @signing_key = SigningKey.new(full_key)
+      @virification_key = VerificationKey.new(full_key[KEY_SIZE, KEY_SIZE])
     end # initialize
   
     def inspect
@@ -22,7 +21,7 @@ module Ed25519
     end # size
     
     def to_s
-      [@signing_key, @verify_key].join
+      [@signing_key, @virification_key].join
     end # to_s
   end # KeyPair
 end # Ed25519

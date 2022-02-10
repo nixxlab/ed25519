@@ -1,13 +1,13 @@
 require "ed25519/key_pair"
 require "ed25519/signing_key"
-require "ed25519/verify_key"
+require "ed25519/virification_key"
 
 # The Ed25519 digital signatre algorithm
 module Ed25519
   module_function
 
   # Raised when a signature fails to verify
-  VerifyError = Class.new(StandardError)
+  VerificationError = Class.new(StandardError)
 
   # Raised when the built-in self-test fails
   SelfTestFailure = Class.new(StandardError)

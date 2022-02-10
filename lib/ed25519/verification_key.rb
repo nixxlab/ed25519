@@ -1,6 +1,6 @@
 module Ed25519
   # Public key for verifying digital signatures
-  class VerifyKey
+  class VerificationKey
     def initialize key
       raise TypeError, "expected String, got #{key.class}" unless key.is_a?(String)
       raise ArgumentError, "expected #{KEY_SIZE}-byte String, got #{key.bytesize}" unless key.bytesize == KEY_SIZE
@@ -17,7 +17,7 @@ module Ed25519
     # @param signature [String] 64-byte string containing an Ed25519 signature
     # @param message [String] string containing message to be verified
     #
-    # @raise Ed25519::VerifyError signature verification failed
+    # @raise Ed25519::VerificationError signature verification failed
     #
     # @return [true] message verified successfully
     def verify signature, message
@@ -27,7 +27,7 @@ module Ed25519
 
       return true if Ed25519.provider.verify(@key, signature, message)
 
-      raise VerifyError, "signature verification failed!"
+      raise VerificationError, "signature verification failed!"
     end # verify
     
     def size
@@ -40,5 +40,5 @@ module Ed25519
     def to_s
       @key
     end # to_s
-  end # VerifyKey
+  end # VerificationKey
 end # Ed25519

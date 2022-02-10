@@ -7,10 +7,11 @@ module Ed25519
     def initialize key = nil
       if key
         raise TypeError, "expected String, got #{key.class}" unless key.is_a?(String)
-        raise ArgumentError, "expected #{KEY_SIZE}-byte String, got #{key.bytesize}" unless key.bytesize == KEY_SIZE
+        raise ArgumentError, "expected #{2 * KEY_SIZE}-byte String, got #{key.bytesize}" unless key.bytesize == 2 * KEY_SIZE
         @key = key
       else
-        @key = SecureRandom.random_bytes(KEY_SIZE)
+        seed = SecureRandom.random_bytes(KEY_SIZE)
+        @key = Ed25519.provider.create_keypair(seed)
       end # if
     end # initialize
 
@@ -28,7 +29,7 @@ module Ed25519
     end # sign
     
     def size
-      KEY_SIZE
+      2 * KEY_SIZE
     end # size
     
     # Return a compressed twisted Edwards coordinate representing the private key
