@@ -1,6 +1,6 @@
 require "ed25519/key_pair"
 require "ed25519/signing_key"
-require "ed25519/virification_key"
+require "ed25519/verification_key"
 
 # The Ed25519 digital signatre algorithm
 module Ed25519

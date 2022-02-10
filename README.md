@@ -70,7 +70,7 @@ Generate a new key pair:
 require "ed25519"
 key_pair = Ed25519::KeyPair.new
 puts key_pair.signing_key.inspect
-puts key_pair.virification_key.inspect
+puts key_pair.verification_key.inspect
 ```
 
 Import key pair by the seed (signing key - 32 bytes binary string):
@@ -79,7 +79,7 @@ Import key pair by the seed (signing key - 32 bytes binary string):
 require "ed25519"
 key_pair = Ed25519::KeyPair.new(seed)
 puts key_pair.signing_key.inspect
-puts key_pair.virification_key.inspect
+puts key_pair.verification_key.inspect
 ```
 
 Import signing key (32 bytes binary string) to making signature for a message:
@@ -92,8 +92,8 @@ signing_key.sign(message)
 Import verification key (32 bytes binary string) for checking of signed messages:
 
 ```ruby
-virification_key = Ed25519::VerificationKey.new(key)
-virification_key.verify(signature, message)
+verification_key = Ed25519::VerificationKey.new(key)
+verification_key.verify(signature, message)
 ```
 
 ## Security Notes

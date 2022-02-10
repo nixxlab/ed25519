@@ -70,8 +70,8 @@ public class Ed25519Provider {
 	}
 
 	@JRubyMethod(name = "verify", module = true)
-	public static IRubyObject verify(ThreadContext context, IRubyObject self, IRubyObject virification_key, IRubyObject signature, IRubyObject msg) throws Exception {
-		byte[] verificationKeyBytes = virification_key.convertToString().getByteList().bytes();
+	public static IRubyObject verify(ThreadContext context, IRubyObject self, IRubyObject verification_key, IRubyObject signature, IRubyObject msg) throws Exception {
+		byte[] verificationKeyBytes = verification_key.convertToString().getByteList().bytes();
 		byte[] signatureBytes = signature.convertToString().getByteList().bytes();
 
 		if (verificationKeyBytes.length != 32) {
