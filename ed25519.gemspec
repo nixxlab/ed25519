@@ -1,7 +1,7 @@
 require File.expand_path("lib/ed25519/version", __dir__)
 
 Gem::Specification.new do |spec|
-  spec.name          = "ed25519"
+  spec.name          = "nixxlab/ed25519"
   spec.version       = Ed25519::VERSION
   spec.authors       = ["Nixxlab team"]
   spec.email         = ["nixxlab@gmail.com"]

@@ -67,7 +67,7 @@ And then execute:
 Generate a new key pair:
 
 ```ruby
-require "ed25519"
+require "nixxlab/ed25519"
 key_pair = Ed25519::KeyPair.new
 puts key_pair.signing_key.inspect
 puts key_pair.verification_key.inspect
@@ -76,7 +76,7 @@ puts key_pair.verification_key.inspect
 Import key pair by the seed (signing key - 32 bytes binary string):
 
 ```ruby
-require "ed25519"
+require "nixxlab/ed25519"
 key_pair = Ed25519::KeyPair.new(seed)
 puts key_pair.signing_key.inspect
 puts key_pair.verification_key.inspect
